@@ -54,10 +54,10 @@ public class MemberService {
 		return vo;
 	}
 // selectOne-Login 상세조회
-	public MemberVo login(String mid, String mpwd){
+	public MemberVo login(String mid, String mpw){
 		MemberVo vo = null;
 		Connection conn = getConnection();
-		vo = dao.login(conn, mid, mpwd);
+		vo = dao.login(conn, mid, mpw);
 		close(conn);
 		return vo;
 	}

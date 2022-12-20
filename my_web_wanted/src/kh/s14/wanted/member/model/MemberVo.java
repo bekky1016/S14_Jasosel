@@ -13,24 +13,18 @@ public class MemberVo {
 //	MTYPE     NOT NULL NUMBER(1)     
 //	BUSNO              VARCHAR2(30)  
 	private String mid;
-	private String mpwd;
-	private String mname;
-	private String memail;
-	private Date mentrance;
-	private String mauthcode;
-	private int mconsent1;
-	private int mtype;
-	// BusinessInfoVo 사용하지 않고 분리해서 사용
-	private String busno;
+	private String mpw;
+	private String mnick;
+	private Date mdate;
+	private int mconsent;
 	
 	public MemberVo() {
 		super();
 	}
 	@Override
 	public String toString() {
-		return "MemberVo [mid=" + mid + ", mpwd=" + mpwd + ", mname=" + mname + ", memail=" + memail + ", mentrance="
-				+ mentrance + ", mauthcode=" + mauthcode + ", mconsent1=" + mconsent1 + ", mtype=" + mtype + ", busno="
-				+ busno + "]";
+		return "MemberVo [mid=" + mid + ", mpw=" + mpw + ", mnick=" + mnick + ", mdate="
+				+ mdate + ", mconsent=" + mconsent + "]";
 	}
 	public String getMid() {
 		return mid;
@@ -38,54 +32,31 @@ public class MemberVo {
 	public void setMid(String mid) {
 		this.mid = mid;
 	}
-	public String getMpwd() {
-		return mpwd;
+	public String getMpw() {
+		return mpw;
 	}
-	public void setMpwd(String mpwd) {
-		this.mpwd = mpwd;
+	public void setMpw(String mpw) {
+		this.mpw = mpw;
 	}
-	public String getMname() {
-		return mname;
+	public String getMnick() {
+		return mnick;
 	}
-	public void setMname(String mname) {
-		this.mname = mname;
+	public void setMnick(String mnick) {
+		this.mnick = mnick;
 	}
-	public String getMemail() {
-		return memail;
+	public Date getMdate() {
+		return mdate;
 	}
-	public void setMemail(String memail) {
-		this.memail = memail;
+	public void setMdate(Date mdate) {
+		this.mdate = mdate;
 	}
-	public Date getMentrance() {
-		return mentrance;
+	public int getMconsent() {
+		return mconsent;
 	}
-	public void setMentrance(Date mentrance) {
-		this.mentrance = mentrance;
+	public void setMconsent(int mconsent) {
+		this.mconsent = mconsent;
 	}
-	public String getMauthcode() {
-		return mauthcode;
-	}
-	public void setMauthcode(String mauthcode) {
-		this.mauthcode = mauthcode;
-	}
-	public int getMconsent1() {
-		return mconsent1;
-	}
-	public void setMconsent1(int mconsent1) {
-		this.mconsent1 = mconsent1;
-	}
-	public int getMtype() {
-		return mtype;
-	}
-	public void setMtype(int mtype) {
-		this.mtype = mtype;
-	}
-	public String getBusno() {
-		return busno;
-	}
-	public void setBusno(String busno) {
-		this.busno = busno;
-	}
+
 
 
 	

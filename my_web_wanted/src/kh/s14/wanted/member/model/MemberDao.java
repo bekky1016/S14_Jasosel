@@ -43,26 +43,23 @@ public class MemberDao {
 		return vo;
 	}
 //	selectOne - login - 상세조회
-	public MemberVo login(Connection conn, String mid, String mpwd){
+	public MemberVo login(Connection conn, String mid, String mpw){
 		MemberVo vo = null;
 		//PK로 where했으므로 단일행 결과물
 		// * 속도 저하의 원인. 필요한 컬럼명을 나열함.
-		String query = "select mid,mname,mauthcode,busno,mtype from member where mid=? and mpwd=?";
+		String query = "select mid,mnick from member where mid=? and mpw=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, mid);
-			pstmt.setString(2, mpwd);
+			pstmt.setString(2, mpw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				//PK로 where했으므로 단일행 결과물로 while문 작성하지 않음
 				vo = new MemberVo();
 				vo.setMid(rs.getString("mid"));
-				vo.setMname(rs.getString("mname"));
-				vo.setMauthcode(rs.getString("mauthcode"));
-				vo.setMtype(rs.getInt("mtype"));
-				vo.setBusno(rs.getString("busno"));
+				vo.setMnick(rs.getString("mnick"));
 //				vo.setMid(rs.getString(1));
 //				vo.setMname(rs.getString(2));
 //				vo.setMauthcode(rs.getString(3));
