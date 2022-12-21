@@ -61,26 +61,4 @@ public class MemberService {
 		close(conn);
 		return vo;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

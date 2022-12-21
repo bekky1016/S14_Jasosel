@@ -30,13 +30,11 @@ public class JoinDoController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mid = request.getParameter("id");
-		String mpwd = request.getParameter("pw");
+		String mpw = request.getParameter("pw");
 		String mname = request.getParameter("user_name");
-		String memail = request.getParameter("user_name");
 		MemberVo vo = new MemberVo();
 		vo.setMid(mid);
-		vo.setMpwd(mpwd);
-		vo.setMemail(memail);
+		vo.setMpw(mpw);
 		
 		System.out.println(vo);
 		int result = new MemberService().insert(vo);

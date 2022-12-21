@@ -68,6 +68,15 @@
                             <div class="notice_header_text_wrapper"> <!-- flex -->
                                 <h2 class="notice_header_text_1">공지사항</h2>
                                 <span class="notice_header_text_2">컬리의 새로운 소식들과 유용한 정보들을 한곳에서 확인하세요.</span>
+                            	<input type="search" id="searchword"><button type="button" id="btn_search">검색</button>
+                            	
+<script>
+	$("#btn_search").click(function(){
+		location.href = "notice?search=" +$("#searchword").val();)
+	});
+</script>                            	
+                            	
+                            	<div class="button_text">글쓰기</div>
                             </div>
                         </div>
 <c:choose>
