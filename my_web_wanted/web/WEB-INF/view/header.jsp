@@ -5,7 +5,7 @@
 <div id="index-header">
 	<div id="logo"
 		onclick="location.href='${pageContext.request.contextPath}';">
-		<img src="<%=request.getContextPath()%>/images/자소설로고.svg">
+		<img src="https://d2bovrvbszerbl.cloudfront.net/assets/logo/logo_landscape-01bd6c93380effd6467ebc566cd6b4b8afd436b716be616dbde484ab28828423.svg">
 
 	</div>
 	<div id="divider">
@@ -18,14 +18,13 @@
 <%-- 				<a class="nav-link" href="${pageContext.request.contextPath }/join" data-toggle="modal" data-target="#login">회원가입/로그인</a> --%>
 
 				<!-- Trigger/Open The Modal -->
-				<button id="myBtn">Open Modal</button>
+				<button type="button" id="myBtn">회원가입/로그인</button>
 
 				<!-- The Modal -->
 				<div id="myModal" class="modal">
 
 					<!-- Modal content -->
 					<div class="modal-content">
-						<span class="close">&times;</span>
 						<div class="modal-header">
 							<span class="close">&times;</span>
 							<h2>Modal Header</h2>
