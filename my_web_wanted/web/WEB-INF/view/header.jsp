@@ -5,41 +5,45 @@
 <div id="index-header">
 	<div id="logo"
 		onclick="location.href='${pageContext.request.contextPath}';">
-		<img src="https://d2bovrvbszerbl.cloudfront.net/assets/logo/logo_landscape-01bd6c93380effd6467ebc566cd6b4b8afd436b716be616dbde484ab28828423.svg">
+		<img
+			src="https://d2bovrvbszerbl.cloudfront.net/assets/logo/logo_landscape-01bd6c93380effd6467ebc566cd6b4b8afd436b716be616dbde484ab28828423.svg">
 
 	</div>
-	<div id="divider">
-	
-	</div>
-	<div id="tab_center">
-	
-	</div>
+	<div id="divider"></div>
+	<div id="tab_center"></div>
 	<div id="tab_right">
-<%-- 				<a class="nav-link" href="${pageContext.request.contextPath }/join" data-toggle="modal" data-target="#login">회원가입/로그인</a> --%>
+		<%-- 				<a class="nav-link" href="${pageContext.request.contextPath }/join" data-toggle="modal" data-target="#login">회원가입/로그인</a> --%>
 
-				<!-- Trigger/Open The Modal -->
-				<button type="button" id="myBtn">회원가입/로그인</button>
+		<!-- Trigger/Open The Modal -->
+		<button type="button" id="myBtn">회원가입/로그인</button>
 
-				<!-- The Modal -->
-				<div id="myModal" class="modal">
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
 
-					<!-- Modal content -->
-					<div class="modal-content">
-						<div class="modal-header">
-							<span class="close">&times;</span>
-							<h2>Modal Header</h2>
-						</div>
-						<div class="modal-body">
-							<p>Some text in the Modal Body</p>
-							<p>Some other text...</p>
-						</div>
-						<div class="modal-footer">
-							<h3>Modal Footer</h3>
-						</div>
-					</div>
-
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2>시작하기</h2>
 				</div>
+				<div class="modal-body">
+					<p>이메일로 회원가입</p>
+					<button type="button" id="join">이메일로 로그인</button>
+					<form action="<%=request.getContextPath()%>/login.do" method="post">
+						<fieldset>
+							<input type="text" placeholder="이메일 주소를 입력해 주세요" name="mid">
+							<br> <input type="password" placeholder="비밀번호를 입력해 주세요" name="mpw"> <br>
+							<button type="submit">로그인</button>
+						</fieldset>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<h6>비밀번호가 기억나지 않으세요?</h6>
+				</div>
+			</div>
 
-			
+		</div>
+
+
 	</div>
 </div>
