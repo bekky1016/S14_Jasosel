@@ -44,7 +44,7 @@ public class LoginDoController extends HttpServlet {
 			request.getSession().setAttribute("loginSsInfo", loginInfo);
 			response.sendRedirect(request.getContextPath() + "/main");
 		} else {
-//			response.sendRedirect(request.getContextPath() + "/main");
+			response.sendRedirect(request.getContextPath() + "/main");
 			System.out.println("로그인 실패");
 		}
 
