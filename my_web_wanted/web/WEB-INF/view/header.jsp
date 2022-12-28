@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div id="index-header">
@@ -15,7 +15,16 @@
 		<%-- 				<a class="nav-link" href="${pageContext.request.contextPath }/join" data-toggle="modal" data-target="#login">회원가입/로그인</a> --%>
 
 		<!-- Trigger/Open The Modal -->
-		<button type="button" id="myBtn">회원가입/로그인</button>
+		<c:choose>
+			<c:when test="${empty loginSsInfo}">
+				<button type="button" id="myBtn">회원가입/로그인</button>
+			</c:when>
+			<c:otherwise>
+                    		${loginSsInfo.mnick }
+	                        <div>|</div>
+				<a href="${pageContext.request.contextPath }/logout">로그아웃</a>
+			</c:otherwise>
+		</c:choose>
 
 		<!-- The Modal -->
 		<div id="myModal" class="modal">
@@ -32,7 +41,8 @@
 					<form action="<%=request.getContextPath()%>/login.do" method="post">
 						<fieldset>
 							<input type="text" placeholder="이메일 주소를 입력해 주세요" name="mid">
-							<br> <input type="password" placeholder="비밀번호를 입력해 주세요" name="mpw"> <br>
+							<br> <input type="password" placeholder="비밀번호를 입력해 주세요"
+								name="mpw"> <br>
 							<button type="submit">로그인</button>
 						</fieldset>
 					</form>
@@ -43,7 +53,5 @@
 			</div>
 
 		</div>
-
-
 	</div>
 </div>

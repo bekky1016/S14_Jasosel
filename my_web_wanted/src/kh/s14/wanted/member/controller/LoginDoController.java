@@ -33,22 +33,20 @@ public class LoginDoController extends HttpServlet {
 		String mid = request.getParameter("mid");
 		String mpw = request.getParameter("mpw");
 
+		System.out.println(mid);
+		System.out.println(mpw);
+
 		MemberService service = new MemberService();
 		MemberVo loginInfo = service.login(mid, mpw);
-//		if(loginInfo!=null) {
-//			if(loginInfo.getMauthcode().equals("1") ) {
-//				System.out.println("로그인 성공");
-//				request.getSession().setAttribute("loginSsInfo", loginInfo);
-//				response.sendRedirect(request.getContextPath()+"/main");
-//			} else if (loginInfo.getMauthcode().equals("0") ) {
-//				System.out.println("로그인인증전");
-//			} else {
-//				System.out.println("이메일을 통한 인증코드를 확인");
-//			}
-		if(loginInfo==null) {
-			response.sendRedirect(request.getContextPath()+"/main");
+
+		if (loginInfo != null) {
+			System.out.println("로그인 성공");
+			request.getSession().setAttribute("loginSsInfo", loginInfo);
+			response.sendRedirect(request.getContextPath() + "/main");
+		} else {
+//			response.sendRedirect(request.getContextPath() + "/main");
 			System.out.println("로그인 실패");
 		}
-	}
 
+	}
 }
