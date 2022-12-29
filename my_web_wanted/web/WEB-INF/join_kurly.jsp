@@ -573,7 +573,7 @@
     </div>
     
     <div>
-    <%@include file="/WEB-INF/view/header.jsp" %>
+    <%@include file="/WEB-INF/header.jsp" %>
         <div id="section">
             <div>
                 <div id="section_child_1">
@@ -730,7 +730,7 @@
             </div>
         </div>
         
-    <%@include file="/WEB-INF/view/footer.jsp" %>
+    <%@include file="/WEB-INF/footer.jsp" %>
     </div>
 </body>
 </html>

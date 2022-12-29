@@ -210,7 +210,7 @@
     <div ng-app="indexApp" class="ng-scope">
   <div ng-controller="IndexCtrl" class="ng-scope">
 
-	<%@include file="/WEB-INF/view/header.jsp"%>
+	<%@include file="/WEB-INF/header.jsp"%>
 	
     <div class="index-content" ng-class="{ 'has-speaker': speaker.show }">
       <!-- ngIf: is_initialized_chat -->

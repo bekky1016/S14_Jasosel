@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div id="index-header">
-	<div id="logo"
-		onclick="location.href='${pageContext.request.contextPath}';">
-		<img
-			src="https://d2bovrvbszerbl.cloudfront.net/assets/logo/logo_landscape-01bd6c93380effd6467ebc566cd6b4b8afd436b716be616dbde484ab28828423.svg">
-
+<div id="header">
+	<div id="logo">
+		<a href="${pageContext.request.contextPath }/main">
+		<img src="<%=request.getContextPath()%>/images/logo.svg"></a>
 	</div>
 	<div id="divider">|</div>
 	<div id="tab_center">

@@ -27,7 +27,7 @@
 </head>
 <body> 
     <div>
-<%@include file="/WEB-INF/view/header.jsp" %>
+<%@include file="/WEB-INF/header.jsp" %>
 		<!-- section -->
         <div id="section">
 
@@ -141,11 +141,10 @@
                 </a>
             </div>
 
-<%@include file="/WEB-INF/view/right_nav.jsp" %>
         </div>
 
         <!-- footer -->
-<%@include file="/WEB-INF/view/footer.jsp" %>
+<%@include file="/WEB-INF/footer.jsp" %>
     </div>
 </body>
 </html>

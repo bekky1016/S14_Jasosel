@@ -28,7 +28,7 @@
 </head>
 <body>
     <div>
-    <%@include file="/WEB-INF/view/header.jsp" %>
+    <%@include file="/WEB-INF/header.jsp" %>
         <div id="section">
             <div class="main_section">
                 <!-- 맨위 상단 섹션-->
@@ -44,9 +44,8 @@
                     <span></span>
                 </a>
             </div>
-            <%@include file="/WEB-INF/view/right_nav.jsp" %>
         </div>
-    <%@include file="/WEB-INF/view/footer.jsp" %>
+    <%@include file="/WEB-INF/footer.jsp" %>
     </div>
 </body>
 </html>
