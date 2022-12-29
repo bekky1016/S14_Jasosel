@@ -16,7 +16,7 @@
 <body>
 	<div>
 		<%@include file="/WEB-INF/header.jsp"%>
-		<div class="main_section">
+		<div class="section">
 			<!-- 0. 광고 -->
 			<div class="main_0">
 				<img class="main_0_img" src="<%=request.getContextPath()%>/images/main_ad.png">

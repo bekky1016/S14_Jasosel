@@ -16,7 +16,7 @@ public class MemberDao {
 		System.out.println(">>> MemberDao login param memberPwd : " + mpw);
 		MemberVo vo = null;
 		
-		String sql = "select * from member where member_id=? and member_pwd=?";
+		String sql = "select * from member where mid=? and mpw=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
