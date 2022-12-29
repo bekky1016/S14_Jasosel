@@ -19,6 +19,26 @@ public class PostingVo {
 	public PostingVo() {
 		super();
 	}
+	
+	public PostingVo(String wantedAuthNo, String company, String title, String sal, String minSal, String maxsal,
+			String region, String holidayTpNm, String career, String regDt, String closeDt, String basicAddr,
+			String detailAddr, String jobsCd) {
+		super();
+		this.wantedAuthNo = wantedAuthNo;
+		this.company = company;
+		this.title = title;
+		this.sal = sal;
+		this.minSal = minSal;
+		this.maxsal = maxsal;
+		this.region = region;
+		this.holidayTpNm = holidayTpNm;
+		this.career = career;
+		this.regDt = regDt;
+		this.closeDt = closeDt;
+		this.basicAddr = basicAddr;
+		this.detailAddr = detailAddr;
+		this.jobsCd = jobsCd;
+	}
 
 	@Override
 	public String toString() {

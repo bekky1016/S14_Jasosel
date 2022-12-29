@@ -1,4 +1,4 @@
-package kh.s14.wanted.member.controller;
+package kh.s14.wanted.inquiry.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LogoutController
+ * Servlet implementation class InquiryController
  */
-@WebServlet("/logout")
-public class LogoutController extends HttpServlet {
+@WebServlet("/Inquiry")
+public class InquiryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutController() {
+    public InquiryController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,10 +26,16 @@ public class LogoutController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("로그아웃");
-		request.getSession().invalidate(); //세션 만료시켜서 모든 데이터 삭제
-		response.sendRedirect(request.getContextPath()+"/main"); //메인페이지로 이동
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
 
 }
