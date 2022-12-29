@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/reset.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/index.css">
-	<script src="<%=request.getContextPath()%>/js/jquery-3.6.1.js"></script>
-	<title>메인 페이지</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/reset.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/index.css">
+<script src="<%=request.getContextPath()%>/js/jquery-3.6.1.js"></script>
+<title>메인 페이지</title>
 
 </head>
 <body>

@@ -3,82 +3,166 @@ package kh.s14.wanted.member.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import common.jdbc.JdbcTemplate;
 
-
-// Member / BusinessInfo  
 public class MemberDao {
-//	insert
-//	update
-//	delete
-//	selectList
-//	selectOne
-	// 최소 5개 
-//	insert - 등록
-	public int insert(Connection conn, MemberVo vo) {
-		int result = 0;
-		return result;
-	}
-//	update - 수정
-	public int update(Connection conn, MemberVo vo, String mid/*주로 PK*/) {
-		int result = 0;
-		return result;
-	}
-//	delete  - 삭제
-	public int delete(Connection conn, String mid/*주로 PK*/) {
-		int result = 0;
-		return result;
-	}
-//	selectList  - 목록조회
-	public List<MemberVo> selectList(Connection conn){
-		List<MemberVo> volist = null;
-
-		return volist;
-	}
-//	selectOne - 상세조회
-	public MemberVo selectOne(Connection conn, String mid/*주로 PK*/){
-		MemberVo vo = null;
-		return vo;
-	}
-//	selectOne - login - 상세조회
+	
 	public MemberVo login(Connection conn, String mid, String mpw){
+		System.out.println(">>> MemberDao login param memberId : " + mid);
+		System.out.println(">>> MemberDao login param memberPwd : " + mpw);
 		MemberVo vo = null;
-		//PK로 where했으므로 단일행 결과물
-		// * 속도 저하의 원인. 필요한 컬럼명을 나열함.
-		String query = "select mid,mnick from member where mid=? and mpw=?";
+		
+		String sql = "select * from member where member_id=? and member_pwd=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement(query);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			pstmt.setString(2, mpw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				//PK로 where했으므로 단일행 결과물로 while문 작성하지 않음
 				vo = new MemberVo();
 				vo.setMid(rs.getString("mid"));
-				vo.setMnick(rs.getString("mnick"));
-//				vo.setMid(rs.getString(1));
-//				vo.setMname(rs.getString(2));
-//				vo.setMauthcode(rs.getString(3));
-//				vo.setMtype(rs.getInt(5));
-//				vo.setBusno(rs.getString(4));
+				vo.setMpw(rs.getString("mpw"));
+				vo.setMname(rs.getString("mname"));
+				vo.setMdate(rs.getDate("mdate"));
+				vo.setMconsent(rs.getInt("mconsent"));
 			}
-		}catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JdbcTemplate.close(rs);
 			JdbcTemplate.close(pstmt);
 		}
-		
-		
+		System.out.println(">>> MemberDao login return : " + vo);
 		return vo;
 	}
 	
-	
-	
-	
-	
+//	insert
+	public int insert(Connection conn, MemberVo vo) {
+		System.out.println(">>> MemberDao insert param : " + vo);
+		int result = 0;
+		String sql = "insert into member(MID,MPW,MNAME,MCONSENT) values(?,?,?,?)"; // ""안에 ; 는 없어야함
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getMid());
+			pstmt.setString(2, vo.getMpw());
+			pstmt.setString(3, vo.getMname());
+			pstmt.setInt(4, vo.getMconsent());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcTemplate.close(pstmt);
+		}
+		System.out.println(">>> MemberDao insert return : " + result);
+		return result;
+	}
+//	update
+	public int update(Connection conn, MemberVo vo, String mid) {
+		System.out.println(">>> MemberDao update param vo : " + vo);
+		System.out.println(">>> MemberDao update param memberId : " + mid);
+		int result = 0;
+		
+		String sql = "UPDATE MEMBER SET MPW=?,MNAME=? WHERE ID=?";
+		
+		PreparedStatement pstmt = null;
+		System.out.println(sql);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getMpw());
+			pstmt.setString(2, vo.getMname());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcTemplate.close(pstmt);
+		}
+		System.out.println(">>> MemberDao update return : " + result);
+		return result;
+	}
+//	delete
+	public int delete(Connection conn, String mid) {
+		System.out.println(">>> MemberDao delete param memberId : " + mid);
+		int result = 0;
+		
+		String sql = "delete from member where mid=?";
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcTemplate.close(pstmt);
+		}
+		System.out.println(">>> MemberDao delete return : " + result);
+		return result;
+	}
+//	selectList - 목록조회
+	public List<MemberVo> selectList(Connection conn){
+		List<MemberVo> volist = null;
+		
+		String sql = "select * from member";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				volist = new ArrayList<MemberVo>();
+				do {
+					MemberVo vo = new MemberVo();
+					vo.setMid(rs.getString("MID"));
+					vo.setMpw(rs.getString("MPWD"));
+					vo.setMname(rs.getString("MNAME"));
+					volist.add(vo);
+				}while(rs.next());
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcTemplate.close(rs);
+			JdbcTemplate.close(pstmt);
+		}
+		System.out.println(">>> MemberDao selectList return : " + volist);
+		return volist;
+	}
+//	selectOne - 상세조회
+	public MemberVo selectOne(Connection conn, String mid){
+		System.out.println(">>> MemberDao selectOne param mid : " + mid);
+		MemberVo vo = null;
+		
+		String sql = "select * from member where mid=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo = new MemberVo();
+				vo.setMpw(rs.getString("mpw"));
+				vo.setMname(rs.getString("mname"));
+				vo.setMconsent(rs.getInt("mconsent"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcTemplate.close(rs);
+			JdbcTemplate.close(pstmt);
+		}
+		System.out.println(">>> MemberDao selectOne return : " + vo);
+		return vo;
+	}
 }

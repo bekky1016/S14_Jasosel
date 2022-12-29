@@ -9,31 +9,59 @@ import static common.jdbc.JdbcTemplate.*;
 
 public class MemberService {
 	private MemberDao dao = new MemberDao();
-//	insert - 등록
+	
+	// 최소 5개 CRUD
+	public MemberVo login(String mid, String mpw) {
+		System.out.println(">> MemberService login param memberId :" + mid);
+		System.out.println(">> MemberService login param memberPwd :" + mpw);
+		Connection conn = JdbcTemplate.getConnection();
+		MemberVo vo = null;
+		vo = dao.login(conn, mid, mpw);
+		JdbcTemplate.close(conn);
+		System.out.println(">> MemberService login return :" + vo);
+		return vo;
+	}
+	
+//	insert
 	public int insert(MemberVo vo) {
 		System.out.println(">> MemberService insert param vo :" + vo);
-		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
+		int result = 0;
 		result = dao.insert(conn, vo);
+		if(result > 0) {
+			JdbcTemplate.commit(conn);
+			System.out.println("커밋 완료");
+		} else {
+			JdbcTemplate.rollback(conn);
+			System.out.println("커밋 실패");
+		}
 		System.out.println(">> MemberService insert return :" + result);
-		JdbcTemplate.close(conn);
 		return result;
 	}
-//	update - 수정
+	
+//	update
 	public int update(MemberVo vo, String mid/*주로 PK*/) {
 		System.out.println(">> MemberService update param mid :" + mid);
-		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
+		int result = 0;
 		result = dao.update(conn, vo, mid);
+		if(result > 0) {
+			JdbcTemplate.commit(conn);
+			System.out.println("커밋 완료");
+		} else {
+			JdbcTemplate.rollback(conn);
+			System.out.println("커밋 실패");
+		}
 		JdbcTemplate.close(conn);
 		System.out.println(">> MemberService update return :" + result);
 		return result;
 	}
-//	delete  - 삭제
+	
+//	delete
 	public int delete(String mid/*주로 PK*/) {
 		System.out.println(">> MemberService delete param mid :" + mid);
-		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
+		int result = 0;
 		result = dao.delete(conn, mid);
 		JdbcTemplate.close(conn);
 		System.out.println(">> MemberService delete return :" + result);
@@ -51,22 +79,11 @@ public class MemberService {
 //	selectOne - 상세조회
 	public MemberVo selectOne(String mid/*주로 PK*/){
 		System.out.println(">> MemberService selectOne param mid :" + mid);
-		MemberVo vo = null;
 		Connection conn = JdbcTemplate.getConnection();
+		MemberVo vo = null;
 		vo = dao.selectOne(conn, mid);
 		JdbcTemplate.close(conn);
 		System.out.println(">> MemberService selectOne return :" + vo);
-		return vo;
-	}
-// selectOne-Login 상세조회
-	public MemberVo login(String mid, String mpw){
-		System.out.println(">> MemberService login param mid :" + mid);
-		System.out.println(">> MemberService login param mpw :" + mpw);
-		MemberVo vo = null;
-		Connection conn = JdbcTemplate.getConnection();
-		vo = dao.login(conn, mid, mpw);
-		JdbcTemplate.close(conn);
-		System.out.println(">> MemberService login return :" + vo);
 		return vo;
 	}
 }

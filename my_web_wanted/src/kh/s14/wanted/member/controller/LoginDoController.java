@@ -44,8 +44,9 @@ public class LoginDoController extends HttpServlet {
 			request.getSession().setAttribute("loginSsInfo", loginInfo);
 			response.sendRedirect(request.getContextPath() + "/main");
 		} else {
-			response.sendRedirect(request.getContextPath() + "/main");
 			System.out.println("로그인 실패");
+			request.setAttribute("msg", "이메일 또는 비밀번호가 틀렸습니다.");
+			response.sendRedirect(request.getContextPath() + "/main");
 		}
 
 	}
