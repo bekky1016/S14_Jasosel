@@ -47,6 +47,6 @@ body {
 
 /* 메인 광고*/
 .main_0_img{
-	width: 100px; 
-	height: 100px; 
+	width: 100%; 
+	height: 100%; 
 }

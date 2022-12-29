@@ -23,11 +23,22 @@
 			</div>
 			<!-- 1. 검색 -->
 			<div class="main_1">
-			
+				<div class="main_1_search">
+                    <img src="<%=request.getContextPath()%>/images/search.png">
+                    <input id="search" name="search" class="search" type="text" placeholder="채용 공고를 찾아보세요">
+                    <hr>
+                </div>
 			</div>
 			<!-- 2. 공고 -->
 			<div class="main_2">
-			
+				<div class="main_2_posting">
+				
+					<span>채용정보</span>
+				
+				
+				
+				
+				</div>
 			</div>
 
 		</div>

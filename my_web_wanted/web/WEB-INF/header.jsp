@@ -6,6 +6,7 @@
 		<a href="${pageContext.request.contextPath }/main">
 		<img src="<%=request.getContextPath()%>/images/logo.svg"></a>
 	</div>
+	
 	<div id="divider">|</div>
 	<div id="tab_center">
 		<ul>
