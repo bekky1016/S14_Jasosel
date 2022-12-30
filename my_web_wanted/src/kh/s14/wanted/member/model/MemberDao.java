@@ -90,7 +90,7 @@ public class MemberDao {
 	}
 //	delete
 	public int delete(Connection conn, String mid) {
-		System.out.println(">>> MemberDao delete param memberId : " + mid);
+		System.out.println(">>> MemberDao delete param mid : " + mid);
 		int result = 0;
 		
 		String sql = "delete from member where mid=?";

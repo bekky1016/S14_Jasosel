@@ -8,58 +8,62 @@ import static common.jdbc.JdbcTemplate.rollback;
 import java.sql.Connection;
 import java.util.List;
 
+import common.jdbc.JdbcTemplate;
 import kh.s14.wanted.member.model.MemberDao;
 import kh.s14.wanted.member.model.MemberVo;
 
 public class PostingService {
 	private PostingDao dao = new PostingDao();
-	//	insert - 등록
+	//	insert
 	public int insert(PostingVo vo) {
+		System.out.println(">> PostingService insert param vo :" + vo);
+		Connection conn = JdbcTemplate.getConnection();
 		int result = 0;
-		Connection conn = getConnection();
 		result = dao.insert(conn, vo);
-		if(result > 0) commit(conn);
-		else rollback(conn);
-		close(conn);
+		System.out.println(">> PostingService insert return :" + result);
 		return result;
 	}
-	//	update - 수정
+	//	update
 	public int update(PostingVo vo, String wantedAuthNo) {
-		int result = 0;
+		System.out.println(">> PostingService update param wantedAuthNo :" + wantedAuthNo);
 		Connection conn = getConnection();
+		int result = 0;
 		result = dao.update(conn, vo, wantedAuthNo);
-		if(result > 0) commit(conn);
-		else rollback(conn);
-		close(conn);
+		
+		JdbcTemplate.close(conn);
+		System.out.println(">> PostingService update return :" + result);
 		return result;
 	}
-	//	delete  - 삭제
+	//	delete
 	public int delete(String wantedAuthNo) {
-		int result = 0;
+		System.out.println(">> PostingService delete param wantedAuthNo :" + wantedAuthNo);
 		Connection conn = getConnection();
+		int result = 0;
 		result = dao.delete(conn, wantedAuthNo);
-		if(result > 0) commit(conn);
-		else rollback(conn);
-		close(conn);	
+		JdbcTemplate.close(conn);
+		System.out.println(">> PostingService delete return :" + result);
 		return result;
 	}
 	//	selectList  - 목록조회
 	public List<PostingVo> selectList(){
-		List<PostingVo> volist = null;
 		Connection conn = getConnection();
+		List<PostingVo> volist = null;
 		volist = dao.selectList(conn);
-		close(conn);
+		JdbcTemplate.close(conn);
+		System.out.println(">> PostingService selectList return :" + volist);
 		return volist;
 	}
 	//	selectOne - 상세조회
 	public PostingVo selectOne(String wantedAuthNo){
-		PostingVo vo = null;
+		System.out.println(">> PostingService selectOne param wantedAuthNo :" + wantedAuthNo);
 		Connection conn = getConnection();
+		PostingVo vo = null;
 		vo = dao.selectOne(conn, wantedAuthNo);
-		close(conn);
+		JdbcTemplate.close(conn);
+		System.out.println(">> PostingService selectOne return :" + vo);
 		return vo;
 	}
-	// selectOne-Posting 상세조회
+	// selectOne-Posting 상세조회 -???
 	public PostingVo login(String wantedAuthNo, String company){
 		PostingVo vo = null;
 		Connection conn = getConnection();
