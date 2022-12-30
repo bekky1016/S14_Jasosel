@@ -10,9 +10,9 @@
 	<div id="divider">|</div>
 	<div id="tab_center">
 		<ul>
-			<li>채용 공고</li>
+			<li><a href="${pageContext.request.contextPath }/posting">채용 공고</a></li>
 			<li>자기소개서</li>
-			<li>데이터랩합격자소서</li>
+			<li>데이터랩</li>
 			<li>합격자소서</li>
 
 		</ul>
