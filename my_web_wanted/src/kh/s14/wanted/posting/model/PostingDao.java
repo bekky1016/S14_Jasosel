@@ -17,7 +17,7 @@ public class PostingDao {
 	public int insert(Connection conn, PostingVo vo) {
 		System.out.println(">>> PostingDao insert param : " + vo);
 		int result = 0;
-		String sql = "insert into posting values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into posting values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = null;
 		
 		try {
@@ -25,17 +25,15 @@ public class PostingDao {
 			pstmt.setString(1, vo.getWantedAuthNo());
 			pstmt.setString(2, vo.getCompany());
 			pstmt.setString(3, vo.getTitle()); 
-			pstmt.setString(4, vo.getSal()); 
-			pstmt.setString(5, vo.getMinSal()); 
-			pstmt.setString(6, vo.getMaxsal()); 
-			pstmt.setString(7, vo.getRegion()); 
-			pstmt.setString(8, vo.getHolidayTpNm()); 
-			pstmt.setString(9, vo.getCareer()); 
-			pstmt.setString(10, vo.getRegDt()); 
-			pstmt.setString(11, vo.getCloseDt()); 
-			pstmt.setString(12, vo.getBasicAddr()); 
-			pstmt.setString(13, vo.getDetailAddr()); 
-			pstmt.setString(14, vo.getJobsCd()); 
+			pstmt.setString(4, vo.getSalTpNm()); 
+			pstmt.setString(5, vo.getSal()); 
+			pstmt.setString(6, vo.getRegion()); 
+			pstmt.setString(7, vo.getMinEdubg()); 
+			pstmt.setString(8, vo.getCareer()); 
+			pstmt.setString(9, vo.getRegDt()); 
+			pstmt.setString(10, vo.getCloseDt()); 
+			pstmt.setString(11, vo.getBasicAddr()); 
+			pstmt.setString(12, vo.getJobsCd()); 
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -104,16 +102,14 @@ public class PostingDao {
 					vo.setWantedAuthNo(rs.getString("wantedAuthNo"));
 					vo.setCompany(rs.getString("company"));
 					vo.setTitle(rs.getString("title"));
+					vo.setSalTpNm(rs.getString("minSal"));
 					vo.setSal(rs.getString("sal"));
-					vo.setMinSal(rs.getString("minSal"));
-					vo.setMaxsal(rs.getString("maxsal"));
 					vo.setRegion(rs.getString("region"));
-					vo.setHolidayTpNm(rs.getString("holidayTpNm"));
+					vo.setMinEdubg(rs.getString("holidayTpNm"));
 					vo.setCareer(rs.getString("career"));
 					vo.setRegDt(rs.getString("regDt"));
 					vo.setCloseDt(rs.getString("closeDt"));
 					vo.setBasicAddr(rs.getString("basicAddr"));
-					vo.setDetailAddr(rs.getString("detailAddr"));
 					vo.setJobsCd(rs.getString("jobsCd"));
 					volist.add(vo);
 				}while(rs.next());
@@ -131,7 +127,7 @@ public class PostingDao {
 	//	selectOne : 채용 공고 상세조회
 	public PostingVo selectOne(Connection conn, String wantedAuthNo){
 		PostingVo vo = null;
-		String sql = "select wantedAuthNo,company,title,sal,minSal,maxsal,region,holidayTpNm,career,regDt,closeDt,basicAddr,detailAddr,jobsCd from posting where wantedAuthNo=?";
+		String sql = "select wantedAuthNo,company,title,salTpNm,sal,region,minEdubg,career,regDt,closeDt,basicAddr,jobsCd from posting where wantedAuthNo=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -146,16 +142,14 @@ public class PostingDao {
 				vo.setWantedAuthNo(rs.getString("wantedAuthNo"));
 				vo.setCompany(rs.getString("company"));
 				vo.setTitle(rs.getString("title"));
+				vo.setSalTpNm(rs.getString("minSal"));
 				vo.setSal(rs.getString("sal"));
-				vo.setMinSal(rs.getString("minSal"));
-				vo.setMaxsal(rs.getString("maxsal"));
 				vo.setRegion(rs.getString("region"));
-				vo.setHolidayTpNm(rs.getString("holidayTpNm"));
+				vo.setMinEdubg(rs.getString("holidayTpNm"));
 				vo.setCareer(rs.getString("career"));
 				vo.setRegDt(rs.getString("regDt"));
 				vo.setCloseDt(rs.getString("closeDt"));
 				vo.setBasicAddr(rs.getString("basicAddr"));
-				vo.setDetailAddr(rs.getString("detailAddr"));
 				vo.setJobsCd(rs.getString("jobsCd"));
 			}
 			

@@ -4,48 +4,42 @@ public class PostingVo {
 	private String wantedAuthNo;
 	private String company;
 	private String title;
+	private String salTpNm;
 	private String sal;
-	private String minSal;
-	private String maxsal;
 	private String region;
-	private String holidayTpNm;
+	private String minEdubg;
 	private String career;
 	private String regDt;
 	private String closeDt;
 	private String basicAddr;
-	private String detailAddr;
 	private String jobsCd;
 	
 	public PostingVo() {
 		super();
 	}
-	
-	public PostingVo(String wantedAuthNo, String company, String title, String sal, String minSal, String maxsal,
-			String region, String holidayTpNm, String career, String regDt, String closeDt, String basicAddr,
-			String detailAddr, String jobsCd) {
+
+	public PostingVo(String wantedAuthNo, String company, String title, String salTpNm, String sal, String region,
+			String minEdubg, String career, String regDt, String closeDt, String basicAddr, String jobsCd) {
 		super();
 		this.wantedAuthNo = wantedAuthNo;
 		this.company = company;
 		this.title = title;
+		this.salTpNm = salTpNm;
 		this.sal = sal;
-		this.minSal = minSal;
-		this.maxsal = maxsal;
 		this.region = region;
-		this.holidayTpNm = holidayTpNm;
+		this.minEdubg = minEdubg;
 		this.career = career;
 		this.regDt = regDt;
 		this.closeDt = closeDt;
 		this.basicAddr = basicAddr;
-		this.detailAddr = detailAddr;
 		this.jobsCd = jobsCd;
 	}
 
 	@Override
 	public String toString() {
-		return "PostingVo [wantedAuthNo=" + wantedAuthNo + ", company=" + company + ", title=" + title + ", sal=" + sal
-				+ ", minSal=" + minSal + ", maxsal=" + maxsal + ", region=" + region + ", holidayTpNm=" + holidayTpNm
-				+ ", career=" + career + ", regDt=" + regDt + ", closeDt=" + closeDt + ", basicAddr=" + basicAddr
-				+ ", detailAddr=" + detailAddr + ", jobsCd=" + jobsCd + "]";
+		return "PostingVo [wantedAuthNo=" + wantedAuthNo + ", company=" + company + ", title=" + title + ", salTpNm="
+				+ salTpNm + ", sal=" + sal + ", region=" + region + ", minEdubg=" + minEdubg + ", career=" + career
+				+ ", regDt=" + regDt + ", closeDt=" + closeDt + ", basicAddr=" + basicAddr + ", jobsCd=" + jobsCd + "]";
 	}
 
 	public String getWantedAuthNo() {
@@ -72,28 +66,20 @@ public class PostingVo {
 		this.title = title;
 	}
 
+	public String getSalTpNm() {
+		return salTpNm;
+	}
+
+	public void setSalTpNm(String salTpNm) {
+		this.salTpNm = salTpNm;
+	}
+
 	public String getSal() {
 		return sal;
 	}
 
 	public void setSal(String sal) {
 		this.sal = sal;
-	}
-
-	public String getMinSal() {
-		return minSal;
-	}
-
-	public void setMinSal(String minSal) {
-		this.minSal = minSal;
-	}
-
-	public String getMaxsal() {
-		return maxsal;
-	}
-
-	public void setMaxsal(String maxsal) {
-		this.maxsal = maxsal;
 	}
 
 	public String getRegion() {
@@ -104,12 +90,12 @@ public class PostingVo {
 		this.region = region;
 	}
 
-	public String getHolidayTpNm() {
-		return holidayTpNm;
+	public String getMinEdubg() {
+		return minEdubg;
 	}
 
-	public void setHolidayTpNm(String holidayTpNm) {
-		this.holidayTpNm = holidayTpNm;
+	public void setMinEdubg(String minEdubg) {
+		this.minEdubg = minEdubg;
 	}
 
 	public String getCareer() {
@@ -144,14 +130,6 @@ public class PostingVo {
 		this.basicAddr = basicAddr;
 	}
 
-	public String getDetailAddr() {
-		return detailAddr;
-	}
-
-	public void setDetailAddr(String detailAddr) {
-		this.detailAddr = detailAddr;
-	}
-
 	public String getJobsCd() {
 		return jobsCd;
 	}
@@ -159,5 +137,6 @@ public class PostingVo {
 	public void setJobsCd(String jobsCd) {
 		this.jobsCd = jobsCd;
 	}
+	
 		
 }
