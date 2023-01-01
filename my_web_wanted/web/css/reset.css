@@ -35,7 +35,7 @@ button {
 a {
 	cursor: pointer;
 	text-decoration: none;
-	color: black;
+	/* color: black; */
 }
 select:focus {
 	outline: none;

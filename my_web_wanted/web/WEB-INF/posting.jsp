@@ -42,7 +42,7 @@
 				<%
 				String key = "WNLBET6R0WPQK95R8VLU02VR1HJ";
 				String url = "http://openapi.work.go.kr/opi/opi/opia/wantedApi.do?authKey=" + key
-						+ "&callTp=L&returnType=XML&startPage=1&display=10";
+						+ "&callTp=L&returnType=XML&startPage=1&display=15";
 				
 				DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 				Document doc = docBuilder.parse(url);
