@@ -22,6 +22,8 @@ public class WorknetAPI {
 		String result = "";
 		
 		NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
+		
+		
 
 		result = nlList.item(0).getTextContent();
 
@@ -54,9 +56,12 @@ public class WorknetAPI {
 			// parsing할 url 지정(API 키 포함해서)
 			String url = "http://openapi.work.go.kr/opi/opi/opia/wantedApi.do?authKey=" + key
 					+ "&callTp=L&returnType=XML&startPage=1&display=10";
-
+			
+			//DOM parser 객체 생성
 			DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
+			
+			//서버로 올린 xml 파일의 local path(전체경로) 지정
 			Document doc = dBuilder.parse(url);
 
 			// 제일 첫번째(root) 태그
@@ -91,21 +96,21 @@ public class WorknetAPI {
 					System.out.println("근무지 기본주소 : " + getTagValue("basicAddr", eElement));
 					System.out.println("직종코드 : " + getTagValue("jobsCd", eElement));
 					
-					PostingVo vo = new PostingVo();
-					// TODO
-					vo.setWantedAuthNo(getTagValue("wantedAuthNo", eElement));
-					vo.setCompany(getTagValue("company", eElement));
-					vo.setTitle(getTagValue("title", eElement));
-					vo.setSalTpNm(getTagValue("salTpNm", eElement));
-					vo.setSal(getTagValue("sal", eElement));
-					vo.setRegion(getTagValue("region", eElement));
-					vo.setMinEdubg(getTagValue("minEdubg", eElement));
-					vo.setCareer(getTagValue("career", eElement));
-					vo.setRegDt(getTagValue("regDt", eElement));
-					vo.setCloseDt(getTagValue("closeDt", eElement));
-					vo.setBasicAddr(getTagValue("basicAddr", eElement));
-					vo.setJobsCd(getTagValue("jobsCd", eElement));
-					volist.add(vo);
+//					PostingVo vo = new PostingVo();
+//					// TODO
+//					vo.setWantedAuthNo(getTagValue("wantedAuthNo", eElement));
+//					vo.setCompany(getTagValue("company", eElement));
+//					vo.setTitle(getTagValue("title", eElement));
+//					vo.setSalTpNm(getTagValue("salTpNm", eElement));
+//					vo.setSal(getTagValue("sal", eElement));
+//					vo.setRegion(getTagValue("region", eElement));
+//					vo.setMinEdubg(getTagValue("minEdubg", eElement));
+//					vo.setCareer(getTagValue("career", eElement));
+//					vo.setRegDt(getTagValue("regDt", eElement));
+//					vo.setCloseDt(getTagValue("closeDt", eElement));
+//					vo.setBasicAddr(getTagValue("basicAddr", eElement));
+//					vo.setJobsCd(getTagValue("jobsCd", eElement));
+//					volist.add(vo);
 				}
 			}
 
