@@ -10,14 +10,13 @@ public class MemberVo {
 //	"MCONSENT"	NUMBER(3)	DEFAULT 0	NOT NULL
 	private String mid;
 	private String mpw;
-	private String mname;
-	private Date mdate;
-	private int mconsent;
+//	private String mname;
+//	private Date mdate;
+	private String mconsent;
 	
 	@Override
 	public String toString() {
-		return "MemberVo [mid=" + mid + ", mpw=" + mpw + ", mname=" + mname + ", mdate=" + mdate + ", mconsent="
-				+ mconsent + "]";
+		return "MemberVo [mid=" + mid + ", mpw=" + mpw + ", mconsent=" + mconsent + "]";
 	}
 
 	public String getMid() {
@@ -36,27 +35,27 @@ public class MemberVo {
 		this.mpw = mpw;
 	}
 
-	public String getMname() {
-		return mname;
-	}
+//	public String getMname() {
+//		return mname;
+//	}
+//
+//	public void setMname(String mname) {
+//		this.mname = mname;
+//	}
 
-	public void setMname(String mname) {
-		this.mname = mname;
-	}
+//	public Date getMdate() {
+//		return mdate;
+//	}
+//
+//	public void setMdate(Date mdate) {
+//		this.mdate = mdate;
+//	}
 
-	public Date getMdate() {
-		return mdate;
-	}
-
-	public void setMdate(Date mdate) {
-		this.mdate = mdate;
-	}
-
-	public int getMconsent() {
+	public String getMconsent() {
 		return mconsent;
 	}
 
-	public void setMconsent(int mconsent) {
+	public void setMconsent(String mconsent) {
 		this.mconsent = mconsent;
 	}
 	

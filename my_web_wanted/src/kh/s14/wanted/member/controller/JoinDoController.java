@@ -32,21 +32,28 @@ public class JoinDoController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String mid = request.getParameter("id");
-		String mpw = request.getParameter("pw");
-		String mname = request.getParameter("user_name");
+		System.out.println("/Join.do 컨트롤러");
+		String mid = request.getParameter("mid");
+		String mpw = request.getParameter("mpw");
+		String mconsent = request.getParameter("mconsent");
 		MemberVo vo = new MemberVo();
 		vo.setMid(mid);
 		vo.setMpw(mpw);
+		vo.setMconsent(mconsent);
 		
 		System.out.println(vo);
 		int result = new MemberService().insert(vo);
 		if (result>0) {
 			System.out.println("회원가입 성공");
-			response.sendRedirect(request.getContextPath()+"/login");
+			request.setAttribute("msgName", "memberInsert");
+			request.setAttribute("msg", "회원가입 성공! 로그인 페이지로 이동합니다.");
+			request.getRequestDispatcher("/WEB-INF/alert.jsp").forward(request, response);
+//			response.sendRedirect(request.getContextPath()+"/login");
 		} else {
 			System.out.println("회원가입 실패");
-			response.sendRedirect(request.getContextPath()+"/main");
+			request.setAttribute("msg", "회원가입 약관에 전체 동의해야 가입이 가능합니다.");
+			request.getRequestDispatcher("/WEB-INF/alert.jsp").forward(request, response);
+//			response.sendRedirect(request.getContextPath()+"/join");
 		}
 		
 	}

@@ -28,9 +28,6 @@ public class MemberDao {
 				vo = new MemberVo();
 				vo.setMid(rs.getString("mid"));
 				vo.setMpw(rs.getString("mpw"));
-				vo.setMname(rs.getString("mname"));
-				vo.setMdate(rs.getDate("mdate"));
-				vo.setMconsent(rs.getInt("mconsent"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -46,15 +43,14 @@ public class MemberDao {
 	public int insert(Connection conn, MemberVo vo) {
 		System.out.println(">>> MemberDao insert param : " + vo);
 		int result = 0;
-		String sql = "insert into member(MID,MPW,MNAME,MCONSENT) values(?,?,?,?)"; // ""안에 ; 는 없어야함
+		String sql = "insert into member(MID,MPW,MCONSENT) values(?,?,?)"; 
 		PreparedStatement pstmt = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getMid());
 			pstmt.setString(2, vo.getMpw());
-			pstmt.setString(3, vo.getMname());
-			pstmt.setInt(4, vo.getMconsent());
+			pstmt.setString(3, vo.getMconsent());
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -71,14 +67,13 @@ public class MemberDao {
 		System.out.println(">>> MemberDao update param memberId : " + mid);
 		int result = 0;
 		
-		String sql = "UPDATE MEMBER SET MPW=?,MNAME=? WHERE ID=?";
+		String sql = "UPDATE MEMBER SET MPW=? WHERE ID=?";
 		
 		PreparedStatement pstmt = null;
 		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getMpw());
-			pstmt.setString(2, vo.getMname());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -124,7 +119,6 @@ public class MemberDao {
 					MemberVo vo = new MemberVo();
 					vo.setMid(rs.getString("MID"));
 					vo.setMpw(rs.getString("MPWD"));
-					vo.setMname(rs.getString("MNAME"));
 					volist.add(vo);
 				}while(rs.next());
 			}
@@ -153,8 +147,6 @@ public class MemberDao {
 			if(rs.next()) {
 				vo = new MemberVo();
 				vo.setMpw(rs.getString("mpw"));
-				vo.setMname(rs.getString("mname"));
-				vo.setMconsent(rs.getInt("mconsent"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
