@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+*{
+	font-family: "Noto Sans KR", sans-serif;
+	font-weight: 400;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -37,9 +43,20 @@ a {
 	text-decoration: none;
 	/* color: black; */
 }
+a:link {
+  color : rgb(153,153,153);
+}
+
+a:hover {
+  color : black;
+}
 select:focus {
 	outline: none;
 }
 input[type="text" i] {
 	outline: none;
+}
+img{
+	vertical-align: middle;
+	border: 0;
 }

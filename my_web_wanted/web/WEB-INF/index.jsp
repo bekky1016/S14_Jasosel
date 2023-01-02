@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/reset.css">
 <link rel="stylesheet"
@@ -46,7 +47,7 @@
 			<div class="main_2">
 				<div class="main_2_posting">
 
-					<span>채용정보</span>
+					<span>최근 게시된 공고 TOP10</span>
 
 
 
@@ -55,6 +56,7 @@
 			</div>
 
 		</div>
+		<hr>
 		<%@include file="/WEB-INF/footer.jsp"%>
 	</div>
 

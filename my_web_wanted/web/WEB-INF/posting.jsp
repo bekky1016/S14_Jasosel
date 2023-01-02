@@ -11,9 +11,18 @@
 <%@ page import="java.sql.*, javax.sql.*, java.net.*" %>
 <%@ page import="javax.xml.parsers.*, org.w3c.dom.*" %>
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/reset.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/index.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/reset.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/index.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/header.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/footer.css">
 <script src="<%=request.getContextPath()%>/js/jquery-3.6.1.js"></script>
+<script src="<%=request.getContextPath()%>/js/index.js"></script>
+<script src="<%=request.getContextPath()%>/js/footer.js"></script>
 <title>채용 공고</title>
 </head>
 <body>
