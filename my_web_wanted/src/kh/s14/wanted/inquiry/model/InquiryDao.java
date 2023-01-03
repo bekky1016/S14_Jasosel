@@ -1,69 +1,181 @@
 package kh.s14.wanted.inquiry.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.List;
+import java.util.ArrayList;
 
-import common.jdbc.JdbcTemplate;
 import kh.s14.wanted.inquiry.model.InquiryVo;
+import kh.s14.wanted.member.model.MemberVo;
 
 public class InquiryDao {
-	// insert - 등록
-	public int insert(Connection conn, InquiryVo vo) {
-		int result = 0;
+	private static InquiryDao inquiryDao = new InquiryDao();
+	private Connection con;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	private int result = 0;
+	
+	private InquiryDao() {
+		super();
+	}
+
+	public static InquiryDao getInstance() {
+		return inquiryDao;
+	}
+	
+	public Connection getConnect() {
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String id = "S14", pw = "S14";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			con = DriverManager.getConnection(url, id, pw);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return con;
+	}
+	
+	public void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (pstmt != null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (con != null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public int nextval() {
+		con = getConnect();
+		StringBuffer query = new StringBuffer();
+		query.append("SELECT MAX(ino) ").append("FROM inquiry");
+		
+		try {
+			pstmt = con.prepareStatement(query.toString());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				result = rs.getInt("MAX(ino)");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(con, pstmt, rs);
+		}
 		return result;
 	}
-
-	// update - 수정
-	public int update(Connection conn, InquiryVo vo, int ino) {
-		int result = 0;
+	
+	public int write(InquiryVo inquiryVo) {
+		con = getConnect();
+		StringBuffer query = new StringBuffer();
+		query.append("INSERT INTO inquiry ");
+		query.append("(ino, ititle, icontent, idate, ihit, icategory, mid) ");
+		query.append("VALUES (?, ?, ?, sysdate, 0, ?, ?)");
+		try {
+			pstmt = con.prepareStatement(query.toString());
+			pstmt.setInt(1, inquiryVo.getIno());
+			pstmt.setString(2, inquiryVo.getItitle());
+			pstmt.setString(3, inquiryVo.getIcontent());
+			pstmt.setString(4, inquiryVo.getIcategory());
+			pstmt.setString(5, inquiryVo.getMid());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(con, pstmt, null);
+		}
 		return result;
 	}
-
-	// delete - 삭제
-	public int delete(Connection conn, int ino) {
-		int result = 0;
+	
+	//InquiryDao 클래스에 DB에 저장된 게시글 데이터를 모두 가져오는 selectList 메소드
+	public List<InquiryVo> selectList(){
+		List<InquiryVo> list = new ArrayList<>();
+		
+		try {
+			con = getConnect();
+			String sql ="SELECT * FROM INQUIRY ORDER BY INO DESC";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				InquiryVo inquiryVo = new InquiryVo();
+				inquiryVo.setIno(rs.getInt("ino"));
+				inquiryVo.setItitle(rs.getString("ititle"));
+				inquiryVo.setIcontent(rs.getString("icontent"));
+				inquiryVo.setIdate(rs.getTimestamp("idate"));
+				inquiryVo.setIhit(rs.getInt("ihit"));
+				inquiryVo.setIcategory(rs.getString("icategory"));
+				inquiryVo.setMid(rs.getString("mid"));
+				list.add(inquiryVo);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return list;
+	}
+	
+	public int hitUpdate(String bbsId) {
+		con = getConnect();
+		String sql = "UPDATE bbs SET bbsHit = bbsHit + 1 WHERE bbsId = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bbsId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(con, pstmt, null);
+		}
 		return result;
 	}
-
-	// selectList - 목록조회
-	public List<InquiryVo> selectList(Connection conn) {
-		List<InquiryVo> volist = null;
-		return volist;
+	
+	public InquiryVo selectById(String ino) {
+		InquiryVo inquiryVo = new InquiryVo();
+		con = getConnect();
+		String sql = "SELECT * FROM INQUIRY WHERE INO = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, ino);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				inquiryVo.setIno(rs.getInt("ino"));
+				inquiryVo.setItitle(rs.getString("ititle"));
+				inquiryVo.setIcontent(rs.getString("icontent"));
+				inquiryVo.setIdate(rs.getTimestamp("idate"));
+				inquiryVo.setIhit(rs.getInt("ihit"));
+				inquiryVo.setIcategory(rs.getString("icategory"));
+				inquiryVo.setMid(rs.getString("mid"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return inquiryVo;
 	}
-
-	// selectOne - 상세조회
-	public InquiryVo selectOne(Connection conn, int ino) {
-		InquiryVo vo = null;
-		return vo;
-	}
-
-	// selectOne - posting - 상세조회
-//	public InquiryVo login(Connection conn, int ino, String company) {
-//		InquiryVo vo = null;
-//		// PK로 where했으므로 단일행 결과물
-//		// * 속도 저하의 원인. 필요한 컬럼명을 나열함.
-//		String query = "select wantedAuthNo,company from posting where wantedAuthNo=? and company=?";
-//		PreparedStatement pstmt = null;
-//		ResultSet rs = null;
-//		try {
-//			pstmt = conn.prepareStatement(query);
-//			pstmt.setInt(1, ino);
-//			pstmt.setString(2, company);
-//			rs = pstmt.executeQuery();
-//			if (rs.next()) {
-//				// PK로 where했으므로 단일행 결과물로 while문 작성하지 않음
-//				vo = new InquiryVo();
-//				vo.setIno(rs.getInt("ino"));
-//				vo.setCompany(rs.getString("company"));
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			JdbcTemplate.close(rs);
-//			JdbcTemplate.close(pstmt);
-//		}
-//		return vo;
-//	}
+	
+	
+	
 }

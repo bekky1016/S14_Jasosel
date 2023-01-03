@@ -41,12 +41,16 @@ public class LoginDoController extends HttpServlet {
 
 		if (loginInfo != null) {
 			System.out.println("로그인 성공");
+			request.setAttribute("msgName", "login");
+//			request.setAttribute("msg", " 로그인 성공! 메인 페이지로 이동합니다.");
+//			request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 			request.getSession().setAttribute("loginSsInfo", loginInfo);
 			response.sendRedirect(request.getContextPath() + "/main");
 		} else {
 			System.out.println("로그인 실패");
 			request.setAttribute("msg", "이메일 또는 비밀번호가 틀렸습니다.");
-			response.sendRedirect(request.getContextPath() + "/main");
+			request.getRequestDispatcher("/WEB-INF/alert.jsp").forward(request, response);
+//			response.sendRedirect(request.getContextPath() + "/main");
 		}
 
 	}

@@ -1,0 +1,55 @@
+.inquiry .controller {
+	padding: 25px 0;
+	margin: auto;
+	width: 840px;
+}
+
+#wriTitle{
+	text-align: center;
+	background-color: rgb(100, 100, 100);
+	width: 800px;
+	height: 50px;
+	padding: 12px 0;
+	color: white;
+}
+.inquiry table {
+	width: 840px;
+	margin: 25px 0;
+	padding: 20px;
+	border-collapse: collapse;
+}
+
+#category {
+	width: 100px;
+	height: 30px;
+}
+
+.inquiry #title {
+	width: 700px;
+	height: 24px;
+}
+
+.inquiry textarea {
+	width: 800px;
+	height: 400px;
+}
+
+.inquiry .button {
+	width: 100px;
+	padding: 5px 12px;
+	border: none;
+	background-color: #FF6813;
+	color: white;
+}
+
+#btn_board, #btn_home {
+	padding: 5px 12px;
+	background-color: white;
+	border-color: rgb(180, 180, 180);
+	border-width: 1px;
+	border: 1px solid black;
+}
+
+.inquiry textarea {
+	resize: none;
+}

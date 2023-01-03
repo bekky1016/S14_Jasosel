@@ -30,7 +30,7 @@
 				<a href="${pageContext.request.contextPath }/login">로그인</a>
 			</c:when>
 			<c:otherwise>
-				<a href="${pageContext.request.contextPath }/inquiry">문의하기</a>
+				<a href="${pageContext.request.contextPath }/write">문의하기</a>
 				<a href="${pageContext.request.contextPath }/logout">로그아웃</a>
 			</c:otherwise>
 		</c:choose>

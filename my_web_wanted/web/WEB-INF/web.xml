@@ -4,11 +4,32 @@
   <welcome-file-list>
     <welcome-file>/WEB-INF/index.jsp</welcome-file>
   </welcome-file-list>
-  
-  <!-- <servlet>
-  	<servlet-name>aaa</servlet-name>
-  	<servlet-class>kh.s14.wanted.member.controller.LoginController</servlet-class>
-  </servlet> -->
+    
+  <servlet>
+		<servlet-name>write</servlet-name>
+		<servlet-class>kh.s14.wanted.inquiry.controller.WriteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>write</servlet-name>
+		<url-pattern>/write.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>inquiry</servlet-name>
+		<servlet-class>kh.s14.wanted.inquiry.controller.InquiryController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>inquiry</servlet-name>
+		<url-pattern>/inquiry.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>inquiryview</servlet-name>
+		<servlet-class>kh.s14.wanted.inquiry.controller.InquiryViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>inquiryview</servlet-name>
+		<url-pattern>/inquiryview.do</url-pattern>
+	</servlet-mapping>
   
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>

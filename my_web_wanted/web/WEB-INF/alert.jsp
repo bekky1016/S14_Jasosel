@@ -25,6 +25,16 @@
 		} else {
 			history.back();
 		}
+	if(messageName == "login") {
+		location.href = "<%=request.getContextPath()%>/main";
+		} else {
+			history.back();
+		}
+	if(messageName == "inquiry") {
+		location.href = "<%=request.getContextPath()%>/inquiry";
+		} else {
+			history.back();
+		}
 	</script>
 </body>
 </html>
